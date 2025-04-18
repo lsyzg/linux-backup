@@ -55,58 +55,56 @@ CONFIGURATION OPTIONS (set at top of backup script):
        unzip arch-backup-YYYY-MM-DD.zip
 
 3. INSTALL ESSENTIAL TOOLS
-   sudo pacman -S chezmoi rsync unzip git zsh vim
+   -sudo pacman -S chezmoi rsync unzip git zsh vim
 
 4. RESTORE PACKAGE LISTS
-   cd arch-backup-YYYY-MM-DD/pkglist
-   sudo pacman -S --needed - < pacman-packages.txt
-   yay -S --needed - < aur-packages.txt   # if using yay
+   -cd arch-backup-YYYY-MM-DD/pkglist
+   -sudo pacman -S --needed - < pacman-packages.txt
+   -yay -S --needed - < aur-packages.txt   # if using yay
 
 5. RESTORE ETC CONFIGS
-   sudo cp -r ../etc/* /etc/
+   -sudo cp -r ../etc/* /etc/
 
 6. RESTORE DOTFILES (chezmoi)
-   chezmoi init --source=~/arch-backup-YYYY-MM-DD/dotfiles
-   chezmoi apply
+   -chezmoi init --source=~/arch-backup-YYYY-MM-DD/dotfiles
+   -chezmoi apply
 
 7. RESTORE USER .local DATA
-   cp -r ../local/* ~/.local/
+   -cp -r ../local/* ~/.local/
 
 8. RESTORE CORE CONFIG FILES
-   sudo cp -r ../configs/* /
+   -sudo cp -r ../configs/* /
 
 9. RESTORE SYSTEMD SERVICES
-   cp -r ../services/home/* ~/
-   sudo cp -r ../services/etc/* /etc/
-   sudo systemctl daemon-reexec
-   sudo systemctl daemon-reload
+   -cp -r ../services/home/* ~/
+   -sudo cp -r ../services/etc/* /etc/
+   -sudo systemctl daemon-reexec
+   -sudo systemctl daemon-reload
 
 10. RESTORE CRONTABS
-   crontab ../crontabs/user-crontab.txt
-   sudo crontab ../crontabs/root-crontab.txt
+   -crontab ../crontabs/user-crontab.txt
+   -sudo crontab ../crontabs/root-crontab.txt
 
 11. RESTORE NETWORK SETTINGS
-   sudo cp -r ../network/system-connections /etc/NetworkManager/
+   -sudo cp -r ../network/system-connections /etc/NetworkManager/
 
 12. RESTORE SECRETS (SSH & GPG)
-   cp -r ../secrets/.ssh ~/
-   cp -r ../secrets/.gnupg ~/
+   -cp -r ../secrets/.ssh ~/
+   -cp -r ../secrets/.gnupg ~/
 
 13. RESTORE SYSTEM BOOT INFO
-   sudo cp -r ../system/loader /boot/
-   sudo cp -r ../system/grub /boot/
-   sudo cp -r ../system/snapper /etc/
-   lsblk -f     # to verify restored layout
+   -sudo cp -r ../system/loader /boot/
+   -sudo cp -r ../system/grub /boot/
+   -sudo cp -r ../system/snapper /etc/
+   -lsblk -f     # to verify restored layout
 
 14. RESTORE DEVELOPER TOOLS
-   cp -r ../tools/* ~/
+   -cp -r ../tools/* ~/
 
 15. RESTORE EXTRAS (Wallpapers, Fonts, Themes)
-   cp -r ../extras/* ~/
+   -cp -r ../extras/* ~/
 
 16. FINAL CHECKS
    - Re-enable services: `systemctl enable --now <service>`
    - Reboot and verify everything is working
    - Clean up temporary files if needed
-
-===============================================================================
