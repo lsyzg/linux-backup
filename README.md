@@ -38,7 +38,6 @@ CONFIGURATION OPTIONS (set at top of backup script):
   SSH_HOST              → remote host (e.g., pi400)
   SSH_DEST_PATH         → remote path to store the archive (e.g., /mnt/backups)
 
-===============================================================================
   HOW TO RESTORE THIS SYSTEM FROM BACKUP
 ===============================================================================
 
